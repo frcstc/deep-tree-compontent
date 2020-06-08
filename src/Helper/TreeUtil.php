@@ -4,15 +4,21 @@
 namespace Frcstc\Luatree\Helper;
 
 
-use Hyperf\Utils\ApplicationContext;
+use Hyperf\Di\Annotation\Inject;
 use Frcstc\Luatree\Entity\AddNode;
+use Redis;
 
 class TreeUtil
 {
+    /**
+     * @Inject()
+     * @var Redis
+     */
+    protected Redis $redis;
+
     public function add(string $hashKey, AddNode $addNode)
     {
-        $redis = ApplicationContext::getContainer()->get(\Redis::class);
-        $redis->hSet($hashKey, $addNode->userId, json_encode($addNode));
+        $this->redis->hSet($hashKey, $addNode->userId, json_encode($addNode));
     }
 
     /**
@@ -23,9 +29,9 @@ class TreeUtil
      */
     public function getParent(string $hashKey, string $userId)
     {
-        $redis = ApplicationContext::getContainer()->get(\Redis::class);
-        $list =  $redis->eval(LuaHelper::getParentList(), [$hashKey, $userId], 1);
-        $error = $redis->getLastError();
+
+        $list =  $this->redis->eval(LuaHelper::getParentList(), [$hashKey, $userId], 1);
+        $error = $this->redis->getLastError();
         if (isset($error) && empty($list)) {
             return $error;
         }
@@ -40,9 +46,8 @@ class TreeUtil
      */
     public function getParentGroupByLevel(string $hashKey, string $userId)
     {
-        $redis = ApplicationContext::getContainer()->get(\Redis::class);
-        $list =  $redis->eval(LuaHelper::getParentGroupByLevel(), [$hashKey, $userId], 1);
-        $error = $redis->getLastError();
+        $list =  $this->redis->eval(LuaHelper::getParentGroupByLevel(), [$hashKey, $userId], 1);
+        $error = $this->redis->getLastError();
         if (isset($error) && empty($list)) {
             return $error;
         }
@@ -57,9 +62,8 @@ class TreeUtil
      */
     public function getChildrenList(string $hashKey, string $userId)
     {
-        $redis = ApplicationContext::getContainer()->get(\Redis::class);
-        $list =  $redis->eval(LuaHelper::getChildList(), [$hashKey, $userId], 1);
-        $error = $redis->getLastError();
+        $list =  $this->redis->eval(LuaHelper::getChildList(), [$hashKey, $userId], 1);
+        $error = $this->redis->getLastError();
         if (isset($error) && empty($list)) {
             return $error;
         }
