@@ -1,4 +1,4 @@
-# frcstc/luatree   lua+redis实现无限递归查询
+# frcstc/luatree   基于hyperf框架 lua+redis实现无限递归查询
 
 ```
 composer require frcstc/luatree
