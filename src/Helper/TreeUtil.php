@@ -1,11 +1,11 @@
 <?php
 
 
-namespace src\Helper;
+namespace Frcstc\Luatree\Helper;
 
 
 use Hyperf\Utils\ApplicationContext;
-use src\Entity\AddNode;
+use Frcstc\Luatree\Entity\AddNode;
 
 class TreeUtil
 {

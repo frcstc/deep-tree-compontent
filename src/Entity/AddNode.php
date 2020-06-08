@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Entity;
+namespace Frcstc\Luatree\Entity;
 /**
  * Class AddNode
  * @property string $userId

@@ -1,5 +1,5 @@
 <?php
-namespace src\Helper;
+namespace Frcstc\Luatree\Helper;
 class LuaHelper
 {
     /**

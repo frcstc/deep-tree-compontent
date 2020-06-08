@@ -1,5 +1,5 @@
 <?php
-namespace src\Entity;
+namespace Frcstc\Luatree\Entity;
 use Hyperf\Utils\Contracts\Jsonable;
 use Hyperf\Utils\Str;
 
