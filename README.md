@@ -1,4 +1,4 @@
-# component-creater
+# frcstc/luatree   lua+redis实现无限递归查询
 
 ```
 composer require frcstc/luatree
