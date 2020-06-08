@@ -47,3 +47,6 @@ $treeUtil->getChildrenList($hashKey, 'test4');
 ```
 
 ### 此方案 利用了redis hset 以及lua函数尾调用 来消除栈内存 达到理论上无限递归的可能，优点是可以支持较大数据量，缺点是 数据存储格式固定，可以继承treeUtil 进行扩展
+
+
+## blog:http://www.hzgood.net/blogs
