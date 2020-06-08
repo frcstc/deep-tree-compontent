@@ -2,8 +2,9 @@
 namespace Frcstc\Luatree\Entity;
 use Hyperf\Utils\Contracts\Jsonable;
 use Hyperf\Utils\Str;
+use JsonSerializable;
 
-class BaseEntity implements Jsonable,JsonSerializable
+class BaseEntity implements Jsonable, JsonSerializable
 {
     private array $data = [];
 
